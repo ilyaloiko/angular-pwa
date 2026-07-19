@@ -37,3 +37,24 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.spacer {
+  flex-grow: 1;
+}
+
+.container-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}

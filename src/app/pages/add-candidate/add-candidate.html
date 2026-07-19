@@ -1,0 +1,47 @@
+<form [formRoot]="userForm" (submit)="submit()">
+
+  <div style="display: flex; flex-direction: column">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput
+             [formField]="userForm.name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Position</mat-label>
+      <input matInput
+             [formField]="userForm.position" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput
+             type="phone"
+             [formField]="userForm.phone" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput
+             type="email"
+             [formField]="userForm.email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Skills</mat-label>
+      <input matInput
+             [formField]="userForm.skills" />
+    </mat-form-field>
+  </div>
+
+  <div class="container-row">
+    <button matButton="tonal" routerLink="/candidates">
+      Cancel
+    </button>
+
+    <button matButton="filled"
+            type="submit">
+      Save
+    </button>
+  </div>
+</form>

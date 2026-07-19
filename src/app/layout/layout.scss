@@ -1,0 +1,32 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  gap: 1rem;
+  padding: 0.5rem;
+
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-primary);
+
+  button {
+    color: var(--mat-sys-primary);
+  }
+
+  button.active {
+    background: color-mix(in srgb, var(--mat-sys-primary) 10%, transparent);
+  }
+}
+
+.logo {
+  display: flex;
+  cursor: pointer;
+
+  .second-part {
+    color: hotpink;
+    font-weight: bold;
+  }
+}
+
+.content {
+  padding: 1rem;
+}
