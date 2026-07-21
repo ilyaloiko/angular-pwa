@@ -1,58 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
-
-export interface Candidate {
-  name: string;
-  position: string;
-  status: string;
-}
-
-const ELEMENT_DATA: Candidate[] = [
-  { name: 'Ilya', position: 'Frontend', status: 'Interview' },
-  { name: 'Oleg', position: 'Backend', status: 'Applied' },
-  { name: 'Alex', position: 'Backend', status: 'Offer' },
-  { name: 'Danila', position: 'Backend', status: 'Applied' },
-  { name: 'Olga', position: 'Full-Stack', status: 'Applied' },
-
-  { name: 'Ilya', position: 'Frontend', status: 'Offer' },
-  { name: 'Misha', position: 'Full-Stack', status: 'Interview' },
-  { name: 'Katya', position: 'Frontend', status: 'Applied' },
-  { name: 'Ilya', position: 'Frontend', status: 'Offer' },
-  { name: 'Sasha', position: 'Full-Stack', status: 'Interview' },
-];
+import { CandidateLocalRepository } from '../../core/repositories/candidate-local-repository';
+import { Candidate } from '../../core/models/candidate.model';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { MatCard, MatCardContent } from '@angular/material/card';
 
 @Component({
   selector: 'app-candidates',
   imports: [
     MatTableModule,
     MatIcon,
-    MatMiniFabButton,
-    MatMenu,
-    MatMenuItem,
-    MatMenuTrigger,
     RouterLink,
     MatButton,
+    MatIconButton,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    MatCard,
+    MatCardContent,
   ],
   templateUrl: './candidates.html',
   styleUrl: './candidates.scss',
 })
-export class Candidates {
-  displayedColumns: string[] = ['name', 'position', 'status'];
-  dataSource = ELEMENT_DATA;
+export class Candidates implements OnInit {
+  private readonly candidateService = inject(CandidateLocalRepository);
 
-  add(): void {
-    alert('Add');
+  displayedColumns: string[] = [
+    'name',
+    'position',
+    'level',
+    'email',
+    'skills',
+    'favorite',
+    'actions',
+  ];
+  dataSource = signal<Candidate[]>([]);
+
+  ngOnInit(): void {
+    this.candidateService.getAll().then((data) => {
+      this.dataSource.set(data);
+    });
   }
 
-  import(): void {
-    // TODO: implement
-  }
-
-  export(): void {
-    // TODO: implement
+  delete(candidate: Candidate): void {
+    if (candidate.id) {
+      this.candidateService.delete(candidate.id);
+    }
   }
 }
