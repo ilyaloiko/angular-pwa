@@ -10,7 +10,7 @@ export class LocalDatabase extends Dexie {
     super('CandidateHub');
 
     this.version(1).stores({
-      candidates: '++id,name,position,email,skills,favorite',
+      candidates: '++id,firstName,lastName,position,email,skills,favorite',
     });
   }
 }

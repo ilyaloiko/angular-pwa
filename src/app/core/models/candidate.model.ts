@@ -1,6 +1,7 @@
 export interface Candidate {
   id?: number;
-  name: string;
+  firstName: string;
+  lastName: string;
   position: string;
   level: string;
   email: string;
