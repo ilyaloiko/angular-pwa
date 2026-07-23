@@ -36,7 +36,7 @@ export class CandidateLocalRepository {
     return this.db.candidates.get(id);
   }
 
-  create(candidate: Candidate) {
+  create(candidate: Candidate): Promise<Candidate> {
     return this.db.candidates.add(candidate);
   }
 

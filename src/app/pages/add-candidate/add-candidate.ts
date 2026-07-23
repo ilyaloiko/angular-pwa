@@ -12,6 +12,7 @@ import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NotificationService } from '../../core/services/notification-service';
 
 @Component({
   selector: 'app-add-candidate',
@@ -38,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class AddCandidate {
   private readonly candidateLocalRepository = inject(CandidateLocalRepository);
+  private readonly notificationService = inject(NotificationService);
   private router = inject(Router);
 
   model = signal<Candidate>({
@@ -65,9 +67,16 @@ export class AddCandidate {
     return this.candidateForm().valid();
   }
 
-  submit(): void {
-    this.candidateLocalRepository.create(this.model()).then(() => {
-      this.router.navigateByUrl('/candidates');
-    });
+  async submit(): Promise<void> {
+    await this.candidateLocalRepository.create(this.model());
+
+    await this.notificationService.show(
+      'Candidate added',
+      `Candidate was added successfully`,
+    );
+
+    await this.notificationService.setBadge();
+
+    await this.router.navigateByUrl('/candidates');
   }
 }
