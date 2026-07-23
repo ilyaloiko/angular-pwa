@@ -2,6 +2,22 @@
   display: grid;
   gap: 1rem;
 
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
+
+mat-card-content {
+  text-align: center;
+
+  .title {
+    font: var(--mat-sys-title-medium);
+    margin-bottom: 16px;
+  }
+
+  .value {
+    font: var(--mat-sys-display-small);
+    font-weight: 700;
+    color: hotpink;
+  }
+}
+
+

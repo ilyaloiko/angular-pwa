@@ -1,21 +1,36 @@
 <div class="dashboard">
   <mat-card appearance="outlined">
-    <mat-card-header>Review</mat-card-header>
-    <mat-card-content>100</mat-card-content>
+    <mat-card-content>
+      <div class="title">Total</div>
+      <div class="value">{{total()}}</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="filled">
+    <mat-card-content>
+      <div class="title">Favorite</div>
+      <div class="value">{{favorite()}}</div>
+    </mat-card-content>
   </mat-card>
 
   <mat-card appearance="outlined">
-    <mat-card-header>Hot</mat-card-header>
-    <mat-card-content>5</mat-card-content>
+    <mat-card-content>
+      <div class="title">Frontend</div>
+      <div class="value">{{ frontend() }}</div>
+    </mat-card-content>
   </mat-card>
 
   <mat-card appearance="outlined">
-    <mat-card-header>Favorite</mat-card-header>
-    <mat-card-content>{{favorite()}}</mat-card-content>
+    <mat-card-content>
+      <div class="title">Backend</div>
+      <div class="value">{{ backend() }}</div>
+    </mat-card-content>
   </mat-card>
 
   <mat-card appearance="outlined">
-    <mat-card-header>Offer</mat-card-header>
-    <mat-card-content>3</mat-card-content>
+    <mat-card-content>
+      <div class="title">Full-Stack</div>
+      <div class="value">{{ fullstack() }}</div>
+    </mat-card-content>
   </mat-card>
 </div>
