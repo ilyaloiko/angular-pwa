@@ -18,7 +18,7 @@ export class Dashboard implements OnInit {
   constructor(private readonly candidateLocalRepository: CandidateLocalRepository) {}
 
   ngOnInit(): void {
-    this.candidateLocalRepository.getAll()
+    this.candidateLocalRepository.getList()
       .then(candidates => {
         this.all.set(candidates.length);
         this.favorite.set(candidates.filter(item => item.favorite).length);

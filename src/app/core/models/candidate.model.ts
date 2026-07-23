@@ -5,6 +5,6 @@ export interface Candidate {
   position: string;
   level: string;
   email: string;
-  skills: string;
+  skills: string[];
   favorite: boolean;
 }

@@ -46,7 +46,7 @@ export class AddCandidate {
     position: '',
     level: '',
     email: '',
-    skills: '',
+    skills: [],
     favorite: false,
   });
 
