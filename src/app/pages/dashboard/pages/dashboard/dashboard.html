@@ -1,19 +1,19 @@
 <div class="dashboard">
 
   <div class="favorite-section">
-    <app-favorite-candidate-carousel [candidates]="favorites()">
-    </app-favorite-candidate-carousel>
+    <app-favorite-carousel [candidates]="favoriteCandidates()">
+    </app-favorite-carousel>
   </div>
 
   <div class="chart-section">
-    <app-candidate-position-chart [candidates]="favorites()">
-    </app-candidate-position-chart>
+    <app-position-chart [candidates]="candidates()">
+    </app-position-chart>
 
-    <app-candidate-level-chart [candidates]="favorites()">
-    </app-candidate-level-chart>
+    <app-level-chart [candidates]="candidates()">
+    </app-level-chart>
   </div>
 
-  <div class="card-section">
+  <div class="kpi-section">
     <app-kpi-card title="Total"
                   [value]="total()">
     </app-kpi-card>

@@ -5,12 +5,12 @@ import { BaseChartDirective } from 'ng2-charts';
 import { MatCard, MatCardContent } from '@angular/material/card';
 
 @Component({
-  selector: 'app-candidate-position-chart',
+  selector: 'app-level-chart',
   imports: [BaseChartDirective, MatCardContent, MatCard],
-  templateUrl: './candidate-position-chart.html',
-  styleUrl: './candidate-position-chart.scss',
+  templateUrl: './level-chart.html',
+  styleUrl: './level-chart.scss',
 })
-export class CandidatePositionChart {
+export class LevelChart {
   readonly candidates = input.required<Candidate[]>();
 
   data: ChartData<'bar'> = {
@@ -26,7 +26,7 @@ export class CandidatePositionChart {
       },
       title: {
         display: true,
-        text: 'Positions',
+        text: 'Levels',
       },
     },
     scales: {
@@ -44,7 +44,7 @@ export class CandidatePositionChart {
       const counts = new Map<string, number>();
 
       for (const candidate of this.candidates()) {
-        counts.set(candidate.position, (counts.get(candidate.position) ?? 0) + 1);
+        counts.set(candidate.level, (counts.get(candidate.level) ?? 0) + 1);
       }
 
       this.data = {
@@ -54,18 +54,18 @@ export class CandidatePositionChart {
             label: 'Candidates',
             data: [...counts.values()],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
               'rgba(153, 102, 255, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
             ],
             borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)',
               'rgb(153, 102, 255)',
+              'rgb(54, 162, 235)',
+              'rgb(75, 192, 192)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 99, 132)',
             ],
             borderWidth: 1,
           },

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CandidatePositionChart } from './candidate-position-chart';
+import { LevelChart } from './level-chart';
 
-describe('CandidatePositionChart', () => {
-  let component: CandidatePositionChart;
-  let fixture: ComponentFixture<CandidatePositionChart>;
+describe('LevelChart', () => {
+  let component: LevelChart;
+  let fixture: ComponentFixture<LevelChart>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CandidatePositionChart],
+      imports: [LevelChart],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CandidatePositionChart);
+    fixture = TestBed.createComponent(LevelChart);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

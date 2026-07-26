@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CandidateLevelChart } from './candidate-level-chart';
+import { FavoriteCarousel } from './favorite-carousel';
 
-describe('CandidateLevelChart', () => {
-  let component: CandidateLevelChart;
-  let fixture: ComponentFixture<CandidateLevelChart>;
+describe('FavoriteCarousel', () => {
+  let component: FavoriteCarousel;
+  let fixture: ComponentFixture<FavoriteCarousel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CandidateLevelChart],
+      imports: [FavoriteCarousel],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CandidateLevelChart);
+    fixture = TestBed.createComponent(FavoriteCarousel);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

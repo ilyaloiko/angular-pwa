@@ -1,0 +1,16 @@
+mat-card-content {
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--mat-sys-primary);
+  font: var(--mat-sys-title-large);
+}
+
+.subtitle {
+  font: var(--mat-sys-title-medium);
+  margin-bottom: 0.75rem;
+}

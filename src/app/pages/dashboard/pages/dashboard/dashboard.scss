@@ -19,14 +19,14 @@
   }
 }
 
-.card-section {
+.kpi-section {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
 @media (max-width: 768px) {
-  .card-section {
+  .kpi-section {
     grid-template-columns: 1fr 1fr;
   }
 }

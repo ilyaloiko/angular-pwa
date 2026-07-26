@@ -1,0 +1,10 @@
+<swiper-container navigation="true"
+                  space-between="16"
+                  slides-per-view="3">
+  @for (candidate of candidates(); track candidate.id) {
+    <swiper-slide>
+      <app-candidate-card [candidate]="candidate">
+      </app-candidate-card>
+    </swiper-slide>
+  }
+</swiper-container>

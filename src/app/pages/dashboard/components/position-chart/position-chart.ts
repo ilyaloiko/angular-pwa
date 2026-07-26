@@ -5,12 +5,12 @@ import { BaseChartDirective } from 'ng2-charts';
 import { MatCard, MatCardContent } from '@angular/material/card';
 
 @Component({
-  selector: 'app-candidate-level-chart',
+  selector: 'app-position-chart',
   imports: [BaseChartDirective, MatCardContent, MatCard],
-  templateUrl: './candidate-level-chart.html',
-  styleUrl: './candidate-level-chart.scss',
+  templateUrl: './position-chart.html',
+  styleUrl: './position-chart.scss',
 })
-export class CandidateLevelChart {
+export class PositionChart {
   readonly candidates = input.required<Candidate[]>();
 
   data: ChartData<'bar'> = {
@@ -26,7 +26,7 @@ export class CandidateLevelChart {
       },
       title: {
         display: true,
-        text: 'Levels',
+        text: 'Positions',
       },
     },
     scales: {
@@ -44,7 +44,7 @@ export class CandidateLevelChart {
       const counts = new Map<string, number>();
 
       for (const candidate of this.candidates()) {
-        counts.set(candidate.level, (counts.get(candidate.level) ?? 0) + 1);
+        counts.set(candidate.position, (counts.get(candidate.position) ?? 0) + 1);
       }
 
       this.data = {
@@ -54,18 +54,18 @@ export class CandidateLevelChart {
             label: 'Candidates',
             data: [...counts.values()],
             backgroundColor: [
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
               'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
             ],
             borderColor: [
-              'rgb(153, 102, 255)',
-              'rgb(54, 162, 235)',
-              'rgb(75, 192, 192)',
-              'rgb(255, 159, 64)',
               'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
             ],
             borderWidth: 1,
           },

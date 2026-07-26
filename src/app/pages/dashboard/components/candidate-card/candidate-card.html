@@ -1,0 +1,14 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <div class="title">
+      <mat-icon>person</mat-icon>
+      <div>{{ candidate().firstName }} {{ candidate().lastName }}</div>
+    </div>
+    <div class="subtitle">
+      {{ candidate().level }} {{ candidate().position }}
+    </div>
+    <div [matTooltip]="candidate().skills.join(', ')">
+      {{ candidate().skills | truncateArray: 3 }}
+    </div>
+  </mat-card-content>
+</mat-card>
