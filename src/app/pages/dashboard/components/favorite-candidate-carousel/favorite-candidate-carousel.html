@@ -1,0 +1,23 @@
+<swiper-container navigation="true"
+                  space-between="20"
+                  slides-per-view="3">
+  @for (candidate of candidates(); track candidate.id) {
+    <swiper-slide>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title class="title">
+              <mat-icon>person</mat-icon>
+              <div>{{ candidate.firstName }} {{ candidate.lastName }}</div>
+            </mat-card-title>
+            <mat-card-subtitle>{{ candidate.level }} {{ candidate.position }}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+
+        <mat-card-content>
+          {{ candidate.skills }}
+        </mat-card-content>
+      </mat-card>
+    </swiper-slide>
+  }
+</swiper-container>

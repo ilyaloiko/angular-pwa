@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './pages/dashboard/dashboard';
+import { Dashboard } from './pages/dashboard/pages/dashboard/dashboard';
 import { Layout } from './layout/layout';
 import { Candidates } from './pages/candidates/candidates';
 import { AddCandidate } from './pages/add-candidate/add-candidate';
