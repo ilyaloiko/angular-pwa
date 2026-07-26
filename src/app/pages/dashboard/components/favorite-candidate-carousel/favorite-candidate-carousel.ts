@@ -9,6 +9,8 @@ import {
 } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { Candidate } from '../../../../core/models/candidate.model';
+import { TruncateArrayPipe } from '../../../../shared/pipes/truncate-array/truncate-array-pipe';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-favorite-candidate-carousel',
@@ -20,6 +22,8 @@ import { Candidate } from '../../../../core/models/candidate.model';
     MatCardTitle,
     MatCardTitleGroup,
     MatIcon,
+    TruncateArrayPipe,
+    MatTooltip,
   ],
   templateUrl: './favorite-candidate-carousel.html',
   styleUrl: './favorite-candidate-carousel.scss',

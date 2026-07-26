@@ -4,24 +4,30 @@
   gap: 1rem;
 }
 
-.cards {
+.favorite-section {
+}
+
+.chart-section {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
 
-  mat-card-content {
-    text-align: center;
+@media (max-width: 768px) {
+  .chart-section {
+    grid-template-columns: 1fr;
+  }
+}
 
-    .title {
-      font: var(--mat-sys-title-medium);
-      margin-bottom: 16px;
-    }
+.card-section {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
 
-    .value {
-      font: var(--mat-sys-display-small);
-      font-weight: 700;
-      color: hotpink;
-    }
+@media (max-width: 768px) {
+  .card-section {
+    grid-template-columns: 1fr 1fr;
   }
 }
 

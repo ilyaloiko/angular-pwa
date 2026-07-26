@@ -1,5 +1,5 @@
 <swiper-container navigation="true"
-                  space-between="20"
+                  space-between="16"
                   slides-per-view="3">
   @for (candidate of candidates(); track candidate.id) {
     <swiper-slide>
@@ -15,7 +15,9 @@
         </mat-card-header>
 
         <mat-card-content>
-          {{ candidate.skills }}
+          <div [matTooltip]="candidate.skills.join(', ')">
+            {{ candidate.skills | truncateArray: 3}}
+          </div>
         </mat-card-content>
       </mat-card>
     </swiper-slide>

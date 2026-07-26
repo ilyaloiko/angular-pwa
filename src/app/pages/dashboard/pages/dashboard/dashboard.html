@@ -1,42 +1,33 @@
 <div class="dashboard">
 
-  <app-favorite-candidate-carousel [candidates]="favorites()">
-  </app-favorite-candidate-carousel>
+  <div class="favorite-section">
+    <app-favorite-candidate-carousel [candidates]="favorites()">
+    </app-favorite-candidate-carousel>
+  </div>
 
-  <div class="cards">
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <div class="title">Total</div>
-        <div class="value">{{total()}}</div>
-      </mat-card-content>
-    </mat-card>
+  <div class="chart-section">
+    <app-candidate-position-chart [candidates]="favorites()">
+    </app-candidate-position-chart>
 
-    <mat-card appearance="filled">
-      <mat-card-content>
-        <div class="title">Favorite</div>
-        <div class="value">{{favorite()}}</div>
-      </mat-card-content>
-    </mat-card>
+    <app-candidate-level-chart [candidates]="favorites()">
+    </app-candidate-level-chart>
+  </div>
 
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <div class="title">Frontend</div>
-        <div class="value">{{ frontend() }}</div>
-      </mat-card-content>
-    </mat-card>
+  <div class="card-section">
+    <app-kpi-card title="Total"
+                  [value]="total()">
+    </app-kpi-card>
 
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <div class="title">Backend</div>
-        <div class="value">{{ backend() }}</div>
-      </mat-card-content>
-    </mat-card>
+    <app-kpi-card title="Frontend"
+                  [value]="frontend()">
+    </app-kpi-card>
 
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <div class="title">Full-Stack</div>
-        <div class="value">{{ fullstack() }}</div>
-      </mat-card-content>
-    </mat-card>
+    <app-kpi-card title="Backend"
+                  [value]="backend()">
+    </app-kpi-card>
+
+    <app-kpi-card title="FullStack"
+                  [value]="fullstack()">
+    </app-kpi-card>
   </div>
 </div>

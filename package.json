@@ -21,7 +21,9 @@
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
     "@angular/service-worker": "^22.0.0",
+    "chart.js": "^4.5.1",
     "dexie": "^4.4.4",
+    "ng2-charts": "^10.0.0",
     "rxjs": "~7.8.0",
     "swiper": "^14.0.6",
     "tslib": "^2.3.0"

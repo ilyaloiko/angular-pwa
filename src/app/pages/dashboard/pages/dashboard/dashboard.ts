@@ -5,10 +5,21 @@ import { MatTableModule } from '@angular/material/table';
 import { CandidateLocalRepository } from '../../../../core/repositories/candidate-local-repository';
 import { Candidate } from '../../../../core/models/candidate.model';
 import { FavoriteCandidateCarousel } from '../../components/favorite-candidate-carousel/favorite-candidate-carousel';
+import { CandidatePositionChart } from '../../components/candidate-position-chart/candidate-position-chart';
+import { KpiCard } from '../../components/kpi-card/kpi-card';
+import { CandidateLevelChart } from '../../components/candidate-level-chart/candidate-level-chart';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatGridListModule, MatCardModule, MatTableModule, FavoriteCandidateCarousel],
+  imports: [
+    MatGridListModule,
+    MatCardModule,
+    MatTableModule,
+    FavoriteCandidateCarousel,
+    CandidatePositionChart,
+    KpiCard,
+    CandidateLevelChart,
+  ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
