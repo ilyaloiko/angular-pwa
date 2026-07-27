@@ -1,0 +1,15 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  color: var(--mat-sys-primary);
+  font-weight: 700;
+}
+
+.value {
+  font-weight: 400;
+  word-break: break-word;
+}

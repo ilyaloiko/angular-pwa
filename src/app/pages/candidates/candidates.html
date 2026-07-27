@@ -4,7 +4,7 @@
 
       <div class="container-row">
         <button matButton="elevated"
-                routerLink="/add-candidate">
+                routerLink="/candidates/new">
           Add
         </button>
 
@@ -18,7 +18,9 @@
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.firstName }} {{ element.lastName }}
+            <button matButton (click)="view(element)">
+              {{ element.firstName }} {{ element.lastName }}
+            </button>
           </td>
         </ng-container>
 
@@ -60,6 +62,9 @@
                     [matMenuTriggerFor]="menu">
               <mat-icon>more_vert</mat-icon>
             </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="view(element)">View</button>
+            </mat-menu>
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="delete(element)">Delete</button>
             </mat-menu>

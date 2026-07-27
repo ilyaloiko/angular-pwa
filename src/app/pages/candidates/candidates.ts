@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CandidateLocalRepository } from '../../core/repositories/candidate-local-repository';
 import { Candidate } from '../../core/models/candidate.model';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
@@ -38,6 +38,7 @@ import { debounceTime, distinctUntilChanged, merge, of, skip, Subject, switchMap
 export class Candidates implements OnInit {
   private readonly candidateLocalRepository = inject(CandidateLocalRepository);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
 
   readonly candidates = signal<Candidate[]>([]);
   readonly searchValue = signal<string>('');
@@ -73,6 +74,10 @@ export class Candidates implements OnInit {
   search(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.searchValue.set(value);
+  }
+
+  view(candidate: Candidate): void {
+    this.router.navigate(['/candidates', candidate.id]);
   }
 
   delete(candidate: Candidate): void {

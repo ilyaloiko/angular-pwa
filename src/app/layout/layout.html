@@ -5,15 +5,23 @@
   </div>
 
   <nav class="container-row">
-    <button matButton routerLink="/dashboard" routerLinkActive="active">
+    <button matButton
+            routerLink="/dashboard"
+            routerLinkActive="active">
       <mat-icon>dashboard</mat-icon>
       Dashboard
     </button>
-    <button matButton routerLink="/candidates" routerLinkActive="active">
+    <button matButton
+            routerLink="/candidates"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
       <mat-icon>group</mat-icon>
       Candidates
     </button>
-    <button matButton routerLink="/add-candidate" routerLinkActive="active">
+    <button matButton
+            routerLink="/candidates/new"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
       <mat-icon>person_add</mat-icon>
       Add Candidate
     </button>

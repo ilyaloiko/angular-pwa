@@ -1,0 +1,36 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <div class="details">
+
+      <div>
+        <div class="label">Name</div>
+        <div class="value">{{ candidate()?.firstName }} {{ candidate()?.lastName }}</div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div>
+        <div class="label">Position</div>
+        <div class="value">{{ candidate()?.level }} {{ candidate()?.position }}</div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div>
+        <div class="label">Email</div>
+        <div class="value">{{ candidate()?.email }}</div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div>
+        <div class="label">Skills</div>
+        <div class="value">{{ candidate()?.skills }}</div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div>
+        <div class="label">Favorite</div>
+        <div class="value">{{ candidate()?.favorite }}</div>
+      </div>
+
+    </div>
+  </mat-card-content>
+</mat-card>

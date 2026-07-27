@@ -3,6 +3,7 @@ import { Dashboard } from './pages/dashboard/pages/dashboard/dashboard';
 import { Layout } from './layout/layout';
 import { Candidates } from './pages/candidates/candidates';
 import { AddCandidate } from './pages/add-candidate/add-candidate';
+import { Candidate } from './pages/candidate/candidate';
 
 export const routes: Routes = [
   {
@@ -20,11 +21,20 @@ export const routes: Routes = [
       },
       {
         path: 'candidates',
-        component: Candidates,
-      },
-      {
-        path: 'add-candidate',
-        component: AddCandidate,
+        children: [
+          {
+            path: '',
+            component: Candidates,
+          },
+          {
+            path: 'new',
+            component: AddCandidate,
+          },
+          {
+            path: ':id',
+            component: Candidate,
+          },
+        ],
       },
     ],
   },
