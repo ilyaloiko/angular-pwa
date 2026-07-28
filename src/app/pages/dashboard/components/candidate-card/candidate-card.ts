@@ -18,6 +18,6 @@ export class CandidateCard {
   private readonly router = inject(Router);
 
   view(): void {
-    this.router.navigate(['/candidates', this.candidate().id]);
+    this.router.navigate(['/candidates', this.candidate().id, 'view']);
   }
 }

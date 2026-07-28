@@ -77,7 +77,7 @@ export class Candidates implements OnInit {
   }
 
   view(candidate: Candidate): void {
-    this.router.navigate(['/candidates', candidate.id]);
+    this.router.navigate(['/candidates', candidate.id, 'view']);
   }
 
   delete(candidate: Candidate): void {

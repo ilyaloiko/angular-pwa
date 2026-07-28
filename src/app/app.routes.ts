@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 import { Dashboard } from './pages/dashboard/pages/dashboard/dashboard';
 import { Layout } from './layout/layout';
 import { Candidates } from './pages/candidates/candidates';
-import { AddCandidate } from './pages/add-candidate/add-candidate';
-import { Candidate } from './pages/candidate/candidate';
+import { CreateCandidate } from './pages/create-candidate/create-candidate';
+import { ViewCandidate } from './pages/view-candidate/view-candidate';
+import { EditCandidate } from './pages/edit-candidate/edit-candidate';
 
 export const routes: Routes = [
   {
@@ -28,11 +29,15 @@ export const routes: Routes = [
           },
           {
             path: 'new',
-            component: AddCandidate,
+            component: CreateCandidate,
           },
           {
-            path: ':id',
-            component: Candidate,
+            path: ':id/view',
+            component: ViewCandidate,
+          },
+          {
+            path: ':id/edit',
+            component: EditCandidate,
           },
         ],
       },

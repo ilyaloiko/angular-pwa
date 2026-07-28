@@ -1,0 +1,91 @@
+<form [formRoot]="candidateForm" (submit)="submit()">
+
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="container-column gap-0">
+
+        <div class="container-row">
+          <mat-form-field appearance="outline" style="flex: 1">
+            <mat-label>First Name</mat-label>
+            <input matInput
+                   [formField]="candidateForm.firstName" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="flex: 1">
+            <mat-label>Last Name</mat-label>
+            <input matInput
+                   [formField]="candidateForm.lastName" />
+          </mat-form-field>
+        </div>
+
+        <div class="container-row">
+          <mat-form-field appearance="outline" style="flex: 1">
+            <mat-label>Position</mat-label>
+            <mat-select [formField]="candidateForm.position">
+              <mat-option value="Frontend">Frontend</mat-option>
+              <mat-option value="Backend">Backend</mat-option>
+              <mat-option value="FullStack">FullStack</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="flex: 1">
+            <mat-label>Level</mat-label>
+            <mat-select [formField]="candidateForm.level">
+              <mat-option value="Junior">Junior</mat-option>
+              <mat-option value="Middle">Middle</mat-option>
+              <mat-option value="Senior">Senior</mat-option>
+              <mat-option value="Lead">Lead</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 type="email"
+                 [formField]="candidateForm.email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Skills</mat-label>
+          <mat-select [formField]="candidateForm.skills" multiple>
+            <mat-optgroup label="Frontend">
+              <mat-option value="Angular">Angular</mat-option>
+              <mat-option value="React">React</mat-option>
+              <mat-option value="Vue">Vue</mat-option>
+              <mat-option value="TypeScript">TypeScript</mat-option>
+              <mat-option value="JavaScript">JavaScript</mat-option>
+              <mat-option value="HTML">HTML</mat-option>
+              <mat-option value="CSS">CSS</mat-option>
+            </mat-optgroup>
+
+            <mat-optgroup label="Backend">
+              <mat-option value="Java">Java</mat-option>
+              <mat-option value=".Net">.Net</mat-option>
+              <mat-option value="Node.js">Node.js</mat-option>
+              <mat-option value="Python">Python</mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-slide-toggle [formField]="candidateForm.favorite" style="padding-bottom: 20px">
+          Favorite
+        </mat-slide-toggle>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="container-row">
+        <button matButton="elevated" routerLink="/candidates">
+          Cancel
+        </button>
+        <button matButton="elevated"
+                type="submit"
+                [disabled]="!isSaveAvailable()">
+          Save
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>
+

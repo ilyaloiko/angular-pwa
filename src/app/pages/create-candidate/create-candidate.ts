@@ -15,7 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NotificationService } from '../../core/services/notification-service';
 
 @Component({
-  selector: 'app-add-candidate',
+  selector: 'app-create-candidate',
   imports: [
     FormRoot,
     MatFormField,
@@ -34,10 +34,10 @@ import { NotificationService } from '../../core/services/notification-service';
     MatFormFieldModule,
     MatProgressSpinnerModule,
   ],
-  templateUrl: './add-candidate.html',
-  styleUrl: './add-candidate.scss',
+  templateUrl: './create-candidate.html',
+  styleUrl: './create-candidate.scss',
 })
-export class AddCandidate {
+export class CreateCandidate {
   private readonly candidateLocalRepository = inject(CandidateLocalRepository);
   private readonly notificationService = inject(NotificationService);
   private router = inject(Router);
@@ -70,12 +70,12 @@ export class AddCandidate {
   async submit(): Promise<void> {
     await this.candidateLocalRepository.create(this.model());
 
-    await this.notificationService.show(
+    /*await this.notificationService.show(
       'Candidate added',
       `Candidate was added successfully`,
     );
 
-    await this.notificationService.setBadge();
+    await this.notificationService.setBadge();*/
 
     await this.router.navigateByUrl('/candidates');
   }
