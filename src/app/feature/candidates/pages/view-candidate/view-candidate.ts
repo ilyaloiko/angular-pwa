@@ -1,9 +1,9 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
 import { MatDivider } from '@angular/material/list';
-import { CandidateLocalRepository } from '../../core/repositories/candidate-local-repository';
+import { CandidateLocalRepository } from '../../../../core/repositories/candidate-local-repository';
 import { Router } from '@angular/router';
-import { Candidate as CandidateDto } from '../../core/models/candidate.model';
+import { Candidate as CandidateDto } from '../../../../core/models/candidate.model';
 import { MatButton } from '@angular/material/button';
 
 @Component({

@@ -3,8 +3,8 @@ import { email, form, FormField, FormRoot, required } from '@angular/forms/signa
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { Candidate } from '../../core/models/candidate.model';
-import { CandidateLocalRepository } from '../../core/repositories/candidate-local-repository';
+import { Candidate } from '../../../../core/models/candidate.model';
+import { CandidateLocalRepository } from '../../../../core/repositories/candidate-local-repository';
 import { MatOptgroup, MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
@@ -12,7 +12,7 @@ import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NotificationService } from '../../core/services/notification-service';
+import { NotificationService } from '../../../../core/services/notification-service';
 
 @Component({
   selector: 'app-create-candidate',

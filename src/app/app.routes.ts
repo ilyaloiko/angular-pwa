@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './pages/dashboard/pages/dashboard/dashboard';
-import { Layout } from './layout/layout';
-import { Candidates } from './pages/candidates/candidates';
-import { CreateCandidate } from './pages/create-candidate/create-candidate';
-import { ViewCandidate } from './pages/view-candidate/view-candidate';
-import { EditCandidate } from './pages/edit-candidate/edit-candidate';
+import { Dashboard } from './feature/dashboard/pages/dashboard/dashboard';
+import { Layout } from './core/components/layout/layout';
+import { Candidates } from './feature/candidates/pages/candidates/candidates';
+import { CreateCandidate } from './feature/candidates/pages/create-candidate/create-candidate';
+import { ViewCandidate } from './feature/candidates/pages/view-candidate/view-candidate';
+import { EditCandidate } from './feature/candidates/pages/edit-candidate/edit-candidate';
 
 export const routes: Routes = [
   {

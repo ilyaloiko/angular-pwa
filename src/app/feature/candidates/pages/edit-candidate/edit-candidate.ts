@@ -1,7 +1,7 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CandidateLocalRepository } from '../../core/repositories/candidate-local-repository';
-import { Candidate as CandidateDto } from '../../core/models/candidate.model';
+import { CandidateLocalRepository } from '../../../../core/repositories/candidate-local-repository';
+import { Candidate as CandidateDto } from '../../../../core/models/candidate.model';
 import { email, form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
