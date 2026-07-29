@@ -15,19 +15,26 @@
 
   <div class="kpi-section">
     <app-kpi-card title="Total"
-                  [value]="total()">
+                  [value]="total()"
+                  [routerLink]="['/candidates']">
     </app-kpi-card>
 
     <app-kpi-card title="Frontend"
-                  [value]="frontend()">
+                  [value]="frontend()"
+                  [routerLink]="['/candidates']"
+                  [queryParams]="{position: 'Frontend'}">
     </app-kpi-card>
 
     <app-kpi-card title="Backend"
-                  [value]="backend()">
+                  [value]="backend()"
+                  [routerLink]="['/candidates']"
+                  [queryParams]="{position: 'Backend'}">
     </app-kpi-card>
 
     <app-kpi-card title="FullStack"
-                  [value]="fullstack()">
+                  [value]="fullstack()"
+                  [routerLink]="['/candidates']"
+                  [queryParams]="{position: 'FullStack'}">
     </app-kpi-card>
   </div>
 </div>

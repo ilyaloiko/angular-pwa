@@ -8,6 +8,7 @@ import { FavoriteCarousel } from '../../components/favorite-carousel/favorite-ca
 import { PositionChart } from '../../components/position-chart/position-chart';
 import { KpiCard } from '../../components/kpi-card/kpi-card';
 import { LevelChart } from '../../components/level-chart/level-chart';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,7 @@ import { LevelChart } from '../../components/level-chart/level-chart';
     PositionChart,
     KpiCard,
     LevelChart,
+    RouterLink,
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
@@ -43,7 +45,7 @@ export class Dashboard implements OnInit {
       this.favorite.set(candidates.filter((item) => item.favorite).length);
       this.frontend.set(candidates.filter((item) => item.position === 'Frontend').length);
       this.backend.set(candidates.filter((item) => item.position === 'Backend').length);
-      this.fullstack.set(candidates.filter((item) => item.position === 'Full-Stack').length);
+      this.fullstack.set(candidates.filter((item) => item.position === 'FullStack').length);
     });
   }
 }

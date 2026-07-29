@@ -2,17 +2,48 @@
   <mat-card-content>
     <div class="container-column">
 
-      <div class="container-row">
-        <button matButton="elevated"
-                routerLink="/candidates/new">
-          Add
-        </button>
+      <form [formRoot]="filterForm">
+        <div class="container-row">
 
-        <mat-form-field appearance="outline" style="flex: 1" subscriptSizing="dynamic">
-          <mat-label>Search</mat-label>
-          <input matInput (input)="search($event)" placeholder="Ex. Senior Frontend Angular">
-        </mat-form-field>
-      </div>
+          <button matIconButton [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="reset()">Reset</button>
+            <button mat-menu-item routerLink="/candidates/new">
+              Add
+            </button>
+          </mat-menu>
+
+          <mat-form-field appearance="outline" style="flex: 1" subscriptSizing="dynamic">
+            <mat-label>Search</mat-label>
+            <input matInput
+                   placeholder="Ex. Senior Frontend Angular"
+                   [formField]="filterForm.search">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="flex: 1" subscriptSizing="dynamic">
+            <mat-label>Position</mat-label>
+            <mat-select [formField]="filterForm.position">
+              <mat-option value="">None</mat-option>
+              <mat-option value="Frontend">Frontend</mat-option>
+              <mat-option value="Backend">Backend</mat-option>
+              <mat-option value="FullStack">FullStack</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="flex: 1" subscriptSizing="dynamic">
+            <mat-label>Level</mat-label>
+            <mat-select [formField]="filterForm.level">
+              <mat-option value="">None</mat-option>
+              <mat-option value="Junior">Junior</mat-option>
+              <mat-option value="Middle">Middle</mat-option>
+              <mat-option value="Senior">Senior</mat-option>
+              <mat-option value="Lead">Lead</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
 
       <table mat-table [dataSource]="candidates()">
         <ng-container matColumnDef="name">

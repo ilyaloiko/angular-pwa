@@ -1,19 +1,22 @@
 import { inject, Service } from '@angular/core';
 import { LocalDatabase } from '../database/local-database';
 import { Candidate } from '../models/candidate.model';
+import { CandidateFilter } from '../../feature/candidates/pages/candidates/candidates';
 
 @Service()
 export class CandidateLocalRepository {
   private readonly db = inject(LocalDatabase);
 
-  getList(searchValue?: string): Promise<Candidate[]> {
+  getList(filter?: CandidateFilter): Promise<Candidate[]> {
     const table = this.db.candidates;
 
-    if (!searchValue) {
+    if (!filter) {
       return table.toArray();
     }
 
-    const searchValues = searchValue.trim().toLocaleLowerCase().split(' ');
+    const {search, position, level} = filter;
+
+    const searchValues = search.trim().toLocaleLowerCase().split(' ');
 
     return table
       .filter((item) => {
@@ -27,7 +30,9 @@ export class CandidateLocalRepository {
           .join(' ')
           .toLocaleLowerCase();
 
-        return searchValues.every((searchValue) => candidateStr.includes(searchValue));
+        return searchValues.every((searchValue) => candidateStr.includes(searchValue))
+          && (!position || item.position === position)
+          && (!level || item.level === level);
       })
       .toArray();
   }
