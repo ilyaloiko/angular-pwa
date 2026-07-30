@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, resource, signal } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -11,8 +11,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TruncateArrayPipe } from '../../../../shared/pipes/truncate-array/truncate-array-pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { merge, Subject, switchMap } from 'rxjs';
 import { form, FormField, FormRoot } from '@angular/forms/signals';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
@@ -48,15 +46,10 @@ export interface CandidateFilter {
   templateUrl: './candidates.html',
   styleUrl: './candidates.scss',
 })
-export class Candidates implements OnInit {
+export class Candidates {
   private readonly candidateLocalRepository = inject(CandidateLocalRepository);
-  private readonly destroyRef = inject(DestroyRef);
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
-
-  readonly candidates = signal<Candidate[]>([]);
-
-  private readonly refresh$ = new Subject<void>();
 
   readonly displayedColumns: string[] = [
     'name',
@@ -71,9 +64,18 @@ export class Candidates implements OnInit {
   readonly filter = signal<CandidateFilter>(this.getFilterFromQueryParams());
   readonly filterForm = form(this.filter);
 
+  readonly candidates = resource<Candidate[], CandidateFilter>({
+    params: () => this.filter(),
+    loader: ({ params }) => {
+      return this.candidateLocalRepository.getList(params);
+    },
+  });
+
   constructor() {
     effect(() => {
-      const {search, position, level} = this.filter();
+      console.log('effect');
+
+      const { search, position, level } = this.filter();
 
       this.addQueryParams({
         search: search || null,
@@ -83,24 +85,13 @@ export class Candidates implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    merge(this.activatedRoute.queryParams, this.refresh$)
-      .pipe(
-        switchMap(() => this.candidateLocalRepository.getList(this.filter())),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe((candidates) => {
-        this.candidates.set(candidates);
-      });
-  }
-
   view(candidate: Candidate): void {
     this.router.navigate(['/candidates', candidate.id, 'view']);
   }
 
   delete(candidate: Candidate): void {
     if (candidate.id) {
-      this.candidateLocalRepository.delete(candidate.id).then(() => this.refresh$.next());
+      this.candidateLocalRepository.delete(candidate.id).then(() => this.candidates.reload());
     }
   }
 
@@ -108,7 +99,7 @@ export class Candidates implements OnInit {
     this.filter.set({
       search: '',
       position: '',
-      level: ''
+      level: '',
     });
   }
 
