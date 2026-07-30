@@ -1,15 +1,9 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './feature/dashboard/pages/dashboard/dashboard';
-import { Layout } from './core/components/layout/layout';
-import { Candidates } from './feature/candidates/pages/candidates/candidates';
-import { CreateCandidate } from './feature/candidates/pages/create-candidate/create-candidate';
-import { ViewCandidate } from './feature/candidates/pages/view-candidate/view-candidate';
-import { EditCandidate } from './feature/candidates/pages/edit-candidate/edit-candidate';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Layout,
+    loadComponent: () => import('./core/components/layout/layout').then((c) => c.Layout),
     children: [
       {
         path: '',
@@ -18,26 +12,37 @@ export const routes: Routes = [
       },
       {
         path: 'dashboard',
-        component: Dashboard,
+        loadComponent: () =>
+          import('./feature/dashboard/pages/dashboard/dashboard').then((c) => c.Dashboard),
       },
       {
         path: 'candidates',
         children: [
           {
             path: '',
-            component: Candidates,
+            loadComponent: () =>
+              import('./feature/candidates/pages/candidates/candidates').then((c) => c.Candidates),
           },
           {
             path: 'new',
-            component: CreateCandidate,
+            loadComponent: () =>
+              import('./feature/candidates/pages/create-candidate/create-candidate').then(
+                (c) => c.CreateCandidate,
+              ),
           },
           {
             path: ':id/view',
-            component: ViewCandidate,
+            loadComponent: () =>
+              import('./feature/candidates/pages/view-candidate/view-candidate').then(
+                (c) => c.ViewCandidate,
+              ),
           },
           {
             path: ':id/edit',
-            component: EditCandidate,
+            loadComponent: () =>
+              import('./feature/candidates/pages/edit-candidate/edit-candidate').then(
+                (c) => c.EditCandidate,
+              ),
           },
         ],
       },
