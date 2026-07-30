@@ -1,6 +1,6 @@
 {
-  "name": "angular-pwa",
-  "short_name": "angular-pwa",
+  "name": "candidate-hub",
+  "short_name": "candidate-hub",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

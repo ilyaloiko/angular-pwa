@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-pwa": {
+    "candidate-hub": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -36,8 +36,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-pwa:build:production"
+              "buildTarget": "candidate-hub:build:production"
             },
             "development": {
-              "buildTarget": "angular-pwa:build:development"
+              "buildTarget": "candidate-hub:build:development"
             }
           },
           "defaultConfiguration": "development"
