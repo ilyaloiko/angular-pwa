@@ -3,7 +3,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
-import { CandidateLocalRepository } from '../../../../core/repositories/candidate-local-repository';
 import { Candidate } from '../../../../core/models/candidate.model';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -14,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { form, FormField, FormRoot } from '@angular/forms/signals';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
+import { CandidateRepository } from '../../../../core/repositories/candidate-repository';
 
 export interface CandidateFilter {
   search: string;
@@ -47,7 +47,7 @@ export interface CandidateFilter {
   styleUrl: './candidates.scss',
 })
 export class Candidates {
-  private readonly candidateLocalRepository = inject(CandidateLocalRepository);
+  private readonly candidateRepository = inject(CandidateRepository);
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
 
@@ -66,8 +66,8 @@ export class Candidates {
 
   readonly candidates = resource<Candidate[], CandidateFilter>({
     params: () => this.filter(),
-    loader: ({ params }) => {
-      return this.candidateLocalRepository.getList(params);
+    loader: () => {
+      return this.candidateRepository.getList();
     },
   });
 
@@ -91,7 +91,7 @@ export class Candidates {
 
   delete(candidate: Candidate): void {
     if (candidate.id) {
-      this.candidateLocalRepository.delete(candidate.id).then(() => this.candidates.reload());
+      this.candidateRepository.delete(candidate.id).then(() => this.candidates.reload());
     }
   }
 

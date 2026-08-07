@@ -1,6 +1,5 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CandidateLocalRepository } from '../../../../core/repositories/candidate-local-repository';
 import { Candidate as CandidateDto } from '../../../../core/models/candidate.model';
 import { email, form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { MatButton } from '@angular/material/button';
@@ -9,6 +8,7 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatOptgroup, MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { CandidateRepository } from '../../../../core/repositories/candidate-repository';
 
 @Component({
   selector: 'app-edit-candidate',
@@ -36,7 +36,7 @@ export class EditCandidate {
 
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly candidateLocalRepository = inject(CandidateLocalRepository);
+  private readonly candidateRepository = inject(CandidateRepository);
 
   readonly model = signal<CandidateDto>({
     firstName: '',
@@ -61,7 +61,7 @@ export class EditCandidate {
 
   constructor() {
     effect(() => {
-      this.candidateLocalRepository.get(+this.id()).then((candidate) => {
+      this.candidateRepository.getOne(this.id()).then((candidate) => {
         if (candidate) {
           this.model.set(candidate);
         }
@@ -74,7 +74,7 @@ export class EditCandidate {
   }
 
   async submit(): Promise<void> {
-    await this.candidateLocalRepository.update(this.model().id ?? 0, this.model());
+    await this.candidateRepository.update(this.model().id!, this.model());
     await this.router.navigate(['/candidates', this.model().id, 'view']);
   }
 }
